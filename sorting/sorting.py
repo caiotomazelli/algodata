@@ -68,3 +68,20 @@ class Sorting:
                 ans.append(m2[idx2])
                 idx2 += 1
         return ans
+
+
+    @classmethod
+    def ssort(cls, arr):
+        """Selection sort implementation."""
+        if len(arr) < 2:
+            return arr
+        
+        curr = 0; target = len(arr) - 1
+        while target > 0:
+            while curr < target:
+                if arr[curr] > arr[target]:
+                    arr[curr], arr[target] = arr[target], arr[curr]
+                curr += 1
+            target -= 1
+            curr = 0
+        return arr

@@ -11,7 +11,7 @@ _CASE_LIST = [[],
               [randint(-1e2, 1e2) for _ in range(int(1e2))]
              ]
 
-_IMPLEMENTATION_LIST = [Sorting.qsort, Sorting.msort]
+_IMPLEMENTATION_LIST = [Sorting.qsort, Sorting.msort, Sorting.ssort]
 
 class SortingTest(unittest.TestCase):
     def setUp(self) -> None:
@@ -20,6 +20,8 @@ class SortingTest(unittest.TestCase):
 
     def test_sorting_works(self) -> None:
         for implementation in _IMPLEMENTATION_LIST:
+            # clean-up test cases, as in-place implementations may have modified them
+            self.setUp()
             for case in self.cases:
                 with self.subTest(f'{implementation.__name__} sorting array of size {len(case)}'):
                     sorted_case = sorted(case)
