@@ -2,6 +2,8 @@ from random import randint
 
 class Sorting:
     """Groups different sorting algorithms."""
+
+
     @classmethod
     def qsort(cls, arr, beggining=0, pivot=None):
         """Quick sort implementation."""
@@ -41,3 +43,28 @@ class Sorting:
         Sorting.qsort(arr, start+1, pivot) 
         return arr
 
+
+    @classmethod
+    def msort(cls, arr):
+        """Merge sort implementation."""
+        if len(arr) < 2:
+            return arr
+        med = len(arr) // 2
+        m1 = Sorting.msort(arr[0:med])
+        m2 = Sorting.msort(arr[med:])
+        idx1 = 0; idx2 = 0; ans = []
+        while len(ans) < len(arr):
+            if idx1 < len(m1) and idx2 < len(m2):
+                if m1[idx1] < m2[idx2]:
+                    ans.append(m1[idx1])
+                    idx1 += 1
+                else:
+                    ans.append(m2[idx2])
+                    idx2 += 1
+            elif idx1 < len(m1):
+                ans.append(m1[idx1])
+                idx1 += 1
+            else:
+                ans.append(m2[idx2])
+                idx2 += 1
+        return ans

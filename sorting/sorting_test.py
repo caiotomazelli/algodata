@@ -11,7 +11,7 @@ _CASE_LIST = [[],
               [randint(-1e2, 1e2) for _ in range(int(1e2))]
              ]
 
-_IMPLEMENTATION_LIST = [Sorting.qsort]
+_IMPLEMENTATION_LIST = [Sorting.qsort, Sorting.msort]
 
 class SortingTest(unittest.TestCase):
     def setUp(self) -> None:
@@ -26,4 +26,4 @@ class SortingTest(unittest.TestCase):
                     self.assertListEqual(implementation(case), sorted_case)
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main(verbosity=2) 
