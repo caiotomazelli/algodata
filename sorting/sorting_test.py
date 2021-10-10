@@ -16,7 +16,7 @@ _CASE_LIST = [[],
               [randint(-1e4, 1e4) for _ in range(int(1e4))]
              ]
 
-_IMPLEMENTATION_LIST = [Sorting.qsort, Sorting.msort, Sorting.ssort]
+_IMPLEMENTATION_LIST = [Sorting.qsort, Sorting.msort, Sorting.ssort, Sorting.isort]
 
 class SortingTest(unittest.TestCase):
     def setUp(self) -> None:

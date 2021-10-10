@@ -1,4 +1,5 @@
 from random import randint
+from types import ClassMethodDescriptorType
 
 class Sorting:
     """Groups different sorting algorithms."""
@@ -84,4 +85,43 @@ class Sorting:
                 curr += 1
             target -= 1
             curr = 0
+        return arr
+
+    @classmethod
+    def isort(cls, arr):
+        """Insertion sort implementation."""
+        if len(arr) < 2:
+            return arr
+        i = 0; j = 1
+        while j < len(arr):
+            while arr[j] > arr[i]:
+                i += 1; j += 1; break
+            while arr[j] < arr[i] and i >= 0:
+                i -= 1
+            last_ord = j
+            while j - i > 1:
+                arr[j], arr[j-1] = arr[j-1], arr[j]
+                j -= 1
+            i = last_ord
+            j = i + 1
+        return arr
+
+
+    @classmethod
+    def slow_isort(cls, arr):
+        """Attempted implementation of insertio sort, turned out to be very slow."""
+        if len(arr) < 2:
+            return arr
+        
+        i = 0; j = 1
+        while j < len(arr):
+            if arr[i] > arr[j]:
+                arr[i], arr[j] = arr[j], arr[i]
+                j = i if i > 0 else 1
+                i = 0
+            elif j - i == 1:
+                i += 1
+                j += 1
+            else:
+                i += 1
         return arr
