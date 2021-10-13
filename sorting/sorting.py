@@ -1,5 +1,4 @@
 from random import randint
-from types import ClassMethodDescriptorType
 
 class Sorting:
     """Groups different sorting algorithms."""
